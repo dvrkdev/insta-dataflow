@@ -8,7 +8,8 @@ The goal of Instagram DataFlow is to provide:
 - 📈 Follower & activity statistics  
 - ⚙️ Automated data collection pipeline  
 
-> ⚠️ This project is currently under active development.  
+> [!WARNING]
+> This project is currently under active development.  
 > All data collection is done on **public profiles only**, using user-provided session credentials.  
 > The purpose of this project is **educational and research-oriented**.
 
