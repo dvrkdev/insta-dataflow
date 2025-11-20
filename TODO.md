@@ -1,1 +1,2 @@
-- create dashboard.html page
+
+- create navbar.html and include to base.html
