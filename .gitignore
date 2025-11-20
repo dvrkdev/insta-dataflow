@@ -1,0 +1,6 @@
+.env
+.venv
+.vscode
+__pycache__
+documents
+instagrapi_example.py
