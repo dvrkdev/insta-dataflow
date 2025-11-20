@@ -1,8 +1,25 @@
-from flask import Blueprint
+from flask import Blueprint, flash, redirect, render_template, url_for
+from flask_login import current_user, login_required, login_user
+from werkzeug.security import check_password_hash
+
+from app import db
+from app.forms import LoginForm
+from app.models import User
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
-@bp.route("/")
-def index():
-    return "index"
+@bp.route("/login", methods=["POST", "GET"])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard.index"))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and check_password_hash(user.password, form.password.data):
+            login_user(user, remember=True)
+            flash(f"Welcome back, {user.username}!", "success")
+            return redirect(url_for("dashboard.index"))
+        else:
+            flash("Invalid username or password!", "danger")
+    return render_template("login.html", form=form)
