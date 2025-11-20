@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, url_for
-from flask_login import current_user, login_required, login_user
+from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import check_password_hash
 
 from app import db
@@ -23,3 +23,11 @@ def login():
         else:
             flash("Invalid username or password!", "danger")
     return render_template("login.html", form=form)
+
+
+@bp.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("You are logged out.", "info")
+    return redirect(url_for("auth.login"))
