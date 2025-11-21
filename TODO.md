@@ -1,5 +1,4 @@
-- create username form validations
-- fetch user data by username
+- create accounts list
 
 
 
