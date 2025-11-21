@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
 
 
 class Account(db.Model):
-    # TODO: add __tablename__
+    __tablename__ = "accounts"
     id = db.Column(db.Integer, primary_key=True)
     pk = db.Column(db.String(32), nullable=False, unique=True)
     username = db.Column(db.String(64), nullable=False, unique=True)
