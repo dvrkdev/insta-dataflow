@@ -1,3 +1,2 @@
-
 - create username form validations
-- test username form & fetch user data
+- fetch user data by username
