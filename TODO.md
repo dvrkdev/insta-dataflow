@@ -1,4 +1,9 @@
-
+- Create a list of accounts
+- Create a page to view account details
+- Create a post model
+- Add a list of posts to account profile details
+- Solving the `profile_pic_url` and `profile_pic_url_hd` issues
+- Create a statistical dashboard
 
 
 > [!note]
