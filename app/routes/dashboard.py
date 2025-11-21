@@ -13,6 +13,7 @@ bp = Blueprint("dashboard", __name__, url_prefix="/")
 @login_required
 def index():
     form = UsernameForm()
+    accounts = Account.query.order_by(Account.created_at.desc()).all()
     if form.validate_on_submit():
 
         user_data = fetch_profile(form.username.data)
@@ -40,4 +41,4 @@ def index():
 
         flash("Account not found!", "danger")
         return redirect(url_for("dashboard.index"))
-    return render_template("dashboard.html", form=form)
+    return render_template("dashboard.html", form=form, accounts=accounts)

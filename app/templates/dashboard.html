@@ -3,9 +3,9 @@
 
 {% block content %}
     <h1 class="mb-3">Welcome to the Instagram DataFlow!</h1>
-    <form action="{{ url_for('dashboard.index') }}" method="post" class="input-group input-group-lg gap-1">
+    <form action="{{ url_for('dashboard.index') }}" method="post" class="input-group input-group-lg gap-1 mb-3">
         {{ form.hidden_tag() }}
-        {{ form.username(class="form-control is-invalid", placeholder="Username") }}
+        {{ form.username(class="form-control " + ("is-invalid" if form.username.errors else "") , placeholder="Username") }}
         {{ form.submit(class="btn btn-dark rounded-0") }}
         {% if form.username.errors %}
         <div class="invalid-feedback">
@@ -13,4 +13,26 @@
         </div>
     {% endif %}
     </form>
+    <!-- Accounts -->
+    {% if accounts %}
+        <h3 class="mb-3">Accounts</h3>
+        <ul class="list-group list-group-flush">
+            {% for account in accounts %}
+                <div class="bg-light p-3 border mb-2">
+                    <p class="mb-0"><strong>PK: </strong>{{ account.pk }}</p>
+                    <p class="mb-0"><strong>USERNAME: </strong>{{ account.username }}</p>
+                    <p class="mb-0"><strong>FULL NAME: </strong>{{ account.full_name }}</p>
+                    <p class="mb-0"><strong>BIOGRAPHY: </strong>{{ account.biography }}</p>
+                    <p class="mb-0"><strong>PROFILE PIC URL: </strong>{{ account.profile_pic_url }}</p>
+                    <p class="mb-0"><strong>PROFILE PIC URL HD: </strong>{{ account.profile_pic_url_hd }}</p>
+                    <p class="mb-0"><strong>FOLLOWER COUNT: </strong>{{ account.follower_count }}</p>
+                    <p class="mb-0"><strong>FOLLOWING COUNT: </strong>{{ account.following_count }}</p>
+                    <p class="mb-0"><strong>MEDIA COUNT: </strong>{{ account.media_count }}</p>
+                    <p class="mb-0"><strong>IS PRIVATE: </strong>{{ account.is_private }}</p>
+                    <p class="mb-0"><strong>IS VERIFIED: </strong>{{ account.is_verified }}</p>
+                    <p class="mb-0"><strong>ACCOUNT TYPE: </strong>{{ account.account_type }}</p>
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
