@@ -3,6 +3,7 @@
 .vscode
 __pycache__
 documents
-instagrapi_example.py
+# instagrapi_example.py
 instance/
 test.py
+example.py
